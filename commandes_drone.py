@@ -13,6 +13,7 @@ run= True
 
 while run:
 
+    pygame.time.delay(1)
     keys= pygame.key.get_pressed()
     
     if keys [pygame.K_t]:
