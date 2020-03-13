@@ -47,6 +47,3 @@ while run:
 my_drone.land()
 
 quit()
-
-
-#test
