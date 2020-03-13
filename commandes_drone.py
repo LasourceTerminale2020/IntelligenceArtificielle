@@ -45,5 +45,6 @@ while run:
 
 
 my_drone.land()
+#salut
 
 quit()
