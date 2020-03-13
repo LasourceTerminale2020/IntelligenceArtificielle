@@ -1,3 +1,7 @@
+# coding: utf-8
+#
+# 12/03/2020
+
 from easytello import tello 
 import pygame
 my_drone = tello.Tello()
