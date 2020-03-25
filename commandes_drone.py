@@ -2,52 +2,74 @@
 #
 # 12/03/2020
 
-from easytello import tello 
+from djitellopy import tello 
 import pygame
-my_drone = tello.Tello()
-my_drone.takeoff()
+import cv2
+
+drone = Tello()
+drone.connect()
+
+print(drone.get_battery())
+
+drone.streamoff()
+drone.streamon()
+
+
+drone.takeoff()
 
 pygame.init()
 
 
 vel=10
 
+print(drone.get_battery())
+
+drone.streamoff()
+drone.streamon()
 
 run= True
 
 while run:
 
-    pygame.time.delay(1)
+    frame_read = drone.get_frame_read()
+    myFrame = frame_read.frame
+
+    cv2.imshow("MyResult", myFrame)
+
     keys= pygame.key.get_pressed()
     
-    if keys [pygame.K_t]:
-        run= False
+    k = cv2.waitKey(1) & 0xFF
+    if k == 27:
+        break    
     
     if keys [pygame.K_LEFT]:
-        my_drone.left(vel)
+        drone.send_rc_control(-vel, 0, 0, 0)
 
     if keys [pygame.K_RIGHT]:
-        my_drone.right(vel)
+        drone.send_rc_control(vel, 0, 0, 0)
     
     if keys [pygame.K_UP]:
-        my_drone.forward(vel)
+        drone.send_rc_control(0, vel, 0, 0)
 
     if keys[pygame.K_DOWN]:
-        my_drone.back(vel)
+        drone.send_rc_control(0, -vel, 0, 0)
 
     if keys [pygame.K_z]:
-        my_drone.up(vel)
+        drone.send_rc_control(0, 0, vel, 0)
 
     if keys [pygame.K_s]:
-        my_drone.down(vel)
+        drone.send_rc_control(0, 0, -vel, 0)
 
     if keys [pygame.K_q]:
-        my_drone.ccw (vel)
+        drone.send_rc_control(0, 0, 0, -vel)
     
     if keys [pygame.K_d]:
-        my_drone.cw (vel)
+        drone.send_rc_control(0, 0, 0, vel)
 
 
 my_drone.land()
+
+cap.release()
+cv2.destroyAllWindows()
 
 quit()
