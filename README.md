@@ -5,7 +5,7 @@ Ecole : La source, Meudon, France.
 
 Année : 2019-2020.
 
-Par Abel Verley, Daphé Biestro, Oddon Aarsse
+Par Abel Verley, Daphné Biestro, Oddon Aarsse
 
 
 Projet sur un drone DJI Tello EDU.
